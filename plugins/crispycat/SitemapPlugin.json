@@ -1,0 +1,36 @@
+{
+	"name": "SitemapPlugin",
+	"class": "crispycat/SitemapPlugin",
+	"description": "Generates a sitemap and robots.txt file.",
+	"scope": "backend",
+	"version":		"1.0.0",
+	"author":		"crispycat",
+	"author_url":	"https://crispy.cat",
+	"options": [
+		{
+			"type": "string",
+			"name": "sitemap_file",
+			"label": "Sitemap file name"
+		},
+		{
+			"type": "string",
+			"name": "changefreq",
+			"label": "Sitemap changefreq"
+		},
+		{
+			"type": "string",
+			"name": "priority",
+			"label": "Sitemap priority"
+		},
+		{
+			"type": "string",
+			"name": "index_priority",
+			"label": "Sitemap index priority"
+		},
+		{
+			"type": "boolean",
+			"name": "generate_robots",
+			"label": "Generate robots.txt"
+		}
+	]
+}

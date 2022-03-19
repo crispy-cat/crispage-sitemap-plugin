@@ -1,0 +1,17 @@
+{
+	"name": "Sitemap plugin",
+	"description": "Sitemap plugin",
+	"version":		"1.0.0",
+	"author":		"crispycat",
+	"author_url":	"https://crispy.cat",
+	"contains":		{
+		"plugins": [
+			{
+				"name": "Sitemap plugin",
+				"version": "1.0.0",
+				"scope": "backend"
+			}
+		]
+	}
+}
+
