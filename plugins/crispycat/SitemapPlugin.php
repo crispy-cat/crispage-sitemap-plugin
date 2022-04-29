@@ -10,7 +10,7 @@
 
 			$app->events->registerAction(new EventAction(array(
 				"id" => "crispycat.SitemapPlugin.generate_on_article_edit",
-				"event" => "content.article_set",
+				"event" => "assets.articles.set",
 				"priority" => 0,
 				"action" => function($app) {
 					$app->vars["sitemapplugin"]->generateSitemap();
@@ -19,7 +19,7 @@
 
 			$app->events->registerAction(new EventAction(array(
 				"id" => "crispycat.SitemapPlugin.generate_on_article_delete",
-				"event" => "content.article_delete",
+				"event" => "assets.articles.delete",
 				"priority" => 0,
 				"action" => function($app) {
 					$app->vars["sitemapplugin"]->generateSitemap();
@@ -28,7 +28,7 @@
 
 			$app->events->registerAction(new EventAction(array(
 				"id" => "crispycat.SitemapPlugin.generate_on_category_edit",
-				"event" => "content.category_set",
+				"event" => "assets.categories.set",
 				"priority" => 0,
 				"action" => function($app) {
 					$app->vars["sitemapplugin"]->generateSitemap();
@@ -37,7 +37,7 @@
 
 			$app->events->registerAction(new EventAction(array(
 				"id" => "crispycat.SitemapPlugin.generate_on_category_delete",
-				"event" => "content.category_delete",
+				"event" => "assets.categories.delete",
 				"priority" => 0,
 				"action" => function($app) {
 					$app->vars["sitemapplugin"]->generateSitemap();
@@ -59,12 +59,12 @@
 					
 				switch ($route["view"]) {
 					case "core/article":
-						$article = $app->content->getArticle($route["item_id"]);
+						$article = $app("articles")->get($route["item_id"]);
 						if (!$article) continue 2;
 						$date = date("Y-m-d", $article->modified);
 						break;
 					case "core/article":
-						$category = $app->content->getCategory($route["item_id"]);
+						$category = $app("categories")->get($route["item_id"]);
 						if (!$category) continue 2;
 						$date = date("Y-m-d", $category->modified);
 						break;

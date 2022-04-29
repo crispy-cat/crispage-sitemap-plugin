@@ -5,7 +5,7 @@
 	
 	// Register extensions
 	installer_message("Registering extensions");
-	$app->extensions->registerExtension("crispycat/SitemapPlugin", "plugin", "backend");
+	ExtensionHelper::registerExtension("crispycat/SitemapPlugin", "plugin", "backend");
 	
 	installer_message("Sitemap plugin installed!", IMSG_INFO);
 ?>

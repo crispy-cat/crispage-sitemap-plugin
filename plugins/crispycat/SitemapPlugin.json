@@ -1,9 +1,9 @@
 {
 	"name": "SitemapPlugin",
-	"class": "crispycat/SitemapPlugin",
+	"class": "crispycat.sitemapplugin/SitemapPlugin",
 	"description": "Generates a sitemap and robots.txt file.",
 	"scope": "backend",
-	"version":		"1.0.0",
+	"version":		"1.0.2",
 	"author":		"crispycat",
 	"author_url":	"https://crispy.cat",
 	"options": [
