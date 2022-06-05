@@ -1,11 +1,11 @@
 <?php
 	// Copy files
-	installer_message("Copying files");
-	FileHelper::copyRecurs(TMPEXT . "/plugins", Config::APPROOT . "/plugins");
+	$app->installerMessage("Copying files");
+	FileHelper::copyRecurs(PACKAGE_DIR . "/plugins", \Config::APPROOT . "/plugins");
 	
 	// Register extensions
 	installer_message("Registering extensions");
-	ExtensionHelper::registerExtension("crispycat/SitemapPlugin", "plugin", "backend");
+	\Crispage\Helpers\ExtensionHelper::registerExtension("crispycat/SitemapPlugin", "plugin", "backend");
 	
-	installer_message("Sitemap plugin installed!", IMSG_INFO);
+	$app->installerMessage("Sitemap plugin installed!", \Crispage\Application\InstallerApplication::IMSG_INFO);
 ?>

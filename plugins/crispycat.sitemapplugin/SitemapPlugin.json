@@ -3,7 +3,7 @@
 	"class": "crispycat.sitemapplugin/SitemapPlugin",
 	"description": "Generates a sitemap and robots.txt file.",
 	"scope": "backend",
-	"version":		"1.0.2",
+	"version":		"1.0.3",
 	"author":		"crispycat",
 	"author_url":	"https://crispy.cat",
 	"options": [

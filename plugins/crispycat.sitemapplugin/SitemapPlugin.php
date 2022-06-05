@@ -1,14 +1,16 @@
 <?php
+	namespace Crispage\Plugins;
+
 	defined("CRISPAGE") or die("Application must be started from index.php!");
 
-	class SitemapPlugin extends Plugin {
+	class SitemapPlugin extends \Crispage\Assets\Plugin {
 		public function execute() {
 			global $app;
 
 			$app->vars["sitemapplugin"] = $this;
 
 
-			$app->events->registerAction(new EventAction(array(
+			$app->events->registerAction(new \Crispage\Events\EventAction(array(
 				"id" => "crispycat.SitemapPlugin.generate_on_article_edit",
 				"event" => "assets.articles.set",
 				"priority" => 0,
@@ -17,7 +19,7 @@
 				}
 			)));
 
-			$app->events->registerAction(new EventAction(array(
+			$app->events->registerAction(new \Crispage\Events\EventAction(array(
 				"id" => "crispycat.SitemapPlugin.generate_on_article_delete",
 				"event" => "assets.articles.delete",
 				"priority" => 0,
@@ -26,7 +28,7 @@
 				}
 			)));
 
-			$app->events->registerAction(new EventAction(array(
+			$app->events->registerAction(new \Crispage\Events\EventAction(array(
 				"id" => "crispycat.SitemapPlugin.generate_on_category_edit",
 				"event" => "assets.categories.set",
 				"priority" => 0,
@@ -35,7 +37,7 @@
 				}
 			)));
 
-			$app->events->registerAction(new EventAction(array(
+			$app->events->registerAction(new \Crispage\Events\EventAction(array(
 				"id" => "crispycat.SitemapPlugin.generate_on_category_delete",
 				"event" => "assets.categories.delete",
 				"priority" => 0,
@@ -55,7 +57,7 @@
 
 			foreach ($app->database->readRows("routes") as $route) {
 				if ($route["item_id"] == "index") $url = "http://" .  $_SERVER["SERVER_NAME"] . Config::WEBROOT . "/";
-				else $url = "http://" .  $_SERVER["SERVER_NAME"] . Config::WEBROOT . "/{$route["id"]}";
+				else $url = "http://" .  $_SERVER["SERVER_NAME"] . \Config::WEBROOT . "/{$route["id"]}";
 					
 				switch ($route["view"]) {
 					case "core/article":
@@ -85,15 +87,15 @@
 
 			$sitemap .= "</urlset>";
 
-			file_put_contents(Config::APPROOT . "/" . ($this->options["sitemap_filename"] ?? "sitemap.xml"), $sitemap);
+			file_put_contents(\Config::APPROOT . "/" . ($this->options["sitemap_filename"] ?? "sitemap.xml"), $sitemap);
 
 			if ($this->options["generate_robots"] ?? true) {
 				$robots = "User-agent: *\n";
 				$robots .= "Disallow: /backend/\n";
 				$robots .= "Disallow: /installer/\n";
-				$robots .= "Sitemap: http://" . $_SERVER["SERVER_NAME"] . Config::WEBROOT . ($this->options["sitemap_filename"] ?? "sitemap.xml");
+				$robots .= "Sitemap: http://" . $_SERVER["SERVER_NAME"] . \Config::WEBROOT . ($this->options["sitemap_filename"] ?? "sitemap.xml");
 
-				file_put_contents(Config::APPROOT . "/robots.txt", $robots);
+				file_put_contents(\Config::APPROOT . "/robots.txt", $robots);
 			}
 		}
 	}
