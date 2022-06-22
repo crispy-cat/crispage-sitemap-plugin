@@ -56,7 +56,7 @@
 			$sitemap .= "\txsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\">\n";
 
 			foreach ($app->database->readRows("routes") as $route) {
-				if ($route["item_id"] == "index") $url = "http://" .  $_SERVER["SERVER_NAME"] . Config::WEBROOT . "/";
+				if ($route["item_id"] == "index") $url = "http://" .  $_SERVER["SERVER_NAME"] . \Config::WEBROOT . "/";
 				else $url = "http://" .  $_SERVER["SERVER_NAME"] . \Config::WEBROOT . "/{$route["id"]}";
 					
 				switch ($route["view"]) {
